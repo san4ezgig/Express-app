@@ -1,8 +1,10 @@
 const express = require('express');
 const router = express.Router();
+import { createUser } from '../data/UserModel';
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
+router.get('/', async function(req, res, next) {
+  await createUser();
   res.send('respond with a resource');
 });
 
