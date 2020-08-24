@@ -1,9 +1,29 @@
-const express = require('express');
+import { createUser, login } from '../data/UserModel';
+import { ERROR_MESSAGES } from '../constants';
+import express from 'express';
+
 const router = express.Router();
 
-/* GET home page. */
-router.get('/', async function(req, res, next) {
-  res.send('responce');
+router.post('/signup', async function (req, res, next) {
+  try {
+    const { body } = req;
+    const data = await createUser(body);
+
+    res.send(data);
+  } catch (e) {
+    res.send(ERROR_MESSAGES.INVALID_CREDENTIALS);
+  }
 });
 
-module.exports = router;
+router.post('/login', async function (req, res, next) {
+  try {
+    const { body: { email, password } } = req;
+    const data = await login(email, password);
+
+    res.send(data);
+  } catch (e) {
+    res.send(ERROR_MESSAGES.INVALID_CREDENTIALS);
+  }
+});
+
+export default router;
