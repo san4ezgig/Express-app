@@ -1,4 +1,4 @@
-import ROLES from './roles';
+import ROLES from '../constants/roles';
 
 const GET_ALL_USER = 'GET_ALL_USER';
 const REMOVE_POST = 'GET_ALL_USER';

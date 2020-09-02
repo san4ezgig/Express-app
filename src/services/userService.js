@@ -1,42 +1,6 @@
-import { DataTypes, Model } from 'sequelize';
-import sequelize from './index';
 import jwt from 'jsonwebtoken';
-import { ROLES } from '../constants';
 import * as argon2 from 'argon2';
-
-class User extends Model {
-}
-
-User.init({
-  id: {
-    type: DataTypes.STRING,
-    primaryKey: true,
-    allowNull: false,
-    autoIncrement: true,
-  },
-  email: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  password: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  firstName: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  role: {
-    type: DataTypes.STRING,
-    defaultValue: ROLES.author,
-  },
-  lastName: {
-    type: DataTypes.STRING,
-  },
-}, {
-  sequelize,
-  modelName: 'User',
-});
+import User from '../models/user';
 
 const generateToken = (user) => {
   const { dataValues: { id, firstName, email } } = user;
@@ -118,4 +82,4 @@ const getAllUsers = async () => {
   return usersList.map(user => user.dataValues).map(({ password, ...data }) => ({ ...data }));
 };
 
-export { createUser, findUserByEmail, findUserById, login, getAllUsers, User };
+export { createUser, findUserByEmail, findUserById, login, getAllUsers };

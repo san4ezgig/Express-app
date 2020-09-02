@@ -1,27 +1,4 @@
-import { DataTypes, Model } from 'sequelize';
-import sequelize from './index';
-import { User } from './UserModel';
-
-class Post extends Model {
-}
-
-Post.init({
-  id: {
-    type: DataTypes.STRING,
-    primaryKey: true,
-    allowNull: false,
-    autoIncrement: true,
-  },
-  text: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-}, {
-  sequelize,
-  modelName: 'Post',
-});
-
-Post.belongsTo(User, { foreignKey: 'userId', targetKey: 'id' });
+import Post from '../models/post';
 
 const getPostById = async (id) => await Post.findOne({
   where: {

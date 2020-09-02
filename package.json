@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon -r esm bin/www"
+    "start": "nodemon -r esm src/bin/www",
+    "migration": "sequelize db:migrate"
   },
   "dependencies": {
     "argon2": "^0.27.0",
@@ -17,6 +18,10 @@
     "jsonwebtoken": "^8.5.1",
     "morgan": "~1.9.1",
     "mysql2": "^2.1.0",
-    "sequelize": "^6.3.4"
+    "sequelize": "^6.3.4",
+    "sequelize-cli": "^6.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "2.0.4"
   }
 }

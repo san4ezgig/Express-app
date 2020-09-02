@@ -1,4 +1,4 @@
-import { findUserByEmail } from '../data/UserModel';
+import { findUserByEmail } from '../services/userService';
 import { ERROR_MESSAGES } from '../constants';
 
 export default async (req, res, next) => {
