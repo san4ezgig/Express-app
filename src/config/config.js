@@ -6,7 +6,7 @@ module.exports = {
     "password": process.env.databasePassword,
     "database": process.env.databaseName,
     "host": "127.0.0.1",
-    "port": 3307,
+    "port": 3306,
     "dialect": "mysql"
   },
   "test": {
@@ -23,4 +23,4 @@ module.exports = {
     "host": "127.0.0.1",
     "dialect": "mysql"
   }
-}
+};

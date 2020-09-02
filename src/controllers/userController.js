@@ -14,10 +14,14 @@ const getUsers = async (req, res, next) => {
 const getUserById = async (req, res, next) => {
   try {
     const user = await findUserById(req.params.userId);
+    if (!user) {
+      return res.send(404).end(ERROR_MESSAGES.USER_NOT_FOUND);
+    }
+    const { password, ...userValuesWithoutPassword } = user.dataValues;
 
-    res.send(user.toJSON());
+    return res.send(userValuesWithoutPassword);
   } catch (e) {
-    res.status(400).end(ERROR_MESSAGES.SOMETHING_WENT_WRONG);
+    return res.status(400).end(ERROR_MESSAGES.SOMETHING_WENT_WRONG);
   }
 };
 
